@@ -1,25 +1,41 @@
 // Trivia Object (to be moved to separate file once I figure that out)
 var Trivia = {
-    
 
+    // TRIVA VARIABLES
     // Questions as an array
-    questions: ["What is the common name of Oophaga Pumilio Siquirres?"],
+    questions: ["What is the common name of Oophaga Pumilio Siquirres?", "How do poison dart frogs gain their poison?"],
     // Options as an array of arrays
-    options: [["Black Jeans", "Blue Jeans", "Strawberry", "Salt Creek"]],
+    options: [["Black Jeans", "Blue Jeans", "Strawberry", "Salt Creek"], ["At birth", "From the environment", "From what they eat", "Developed as tadpoles"]],
     // Answers as an array
-    answers: ["Black Jeans"]
-}
+    answers: ["Black Jeans"],
+    
+    // USER VARIABLES
+    correctAnswers: 0,
+    userAnswers: [],
 
-// ------ Game Functions ------
+    // Updates the display to show the question and options for the current round
+    initializeDisplay: function () {
+        for (let i = 0; i < this.questions.length; i++) {
 
-//Sets the Question text and sets each option text
-function initializeQuestionAndOptions(set) {
-    console.log(set.options);
-    $("#question").text(set.question);
-    for (let i = 0; i < 4; i++) {
-        $("#option-" + (i + 1)).text(set.options[i]);
-        console.log("#option-" + (i + 1));
+            $("#question").text(this.questions[i]);
+
+            let div = $("<div>");
+            div.addClass("row")
+
+            let id = ("q" + i);
+
+            for (let j = 0; j < this.options[i].length; j++) {
+                let option = $('<div>').text(this.options[i][j]);
+                option.addClass('col-md-3', 'option-button');
+                option.attr('id', (id +'-option-' + j));
+                div.append(option);
+            }
+
+            $("#game-board").append(div);
+        }
+
     }
+
 }
 
 // ------ Helper Functions ------
@@ -39,9 +55,11 @@ $(document).ready(function () {
     var timer_active = false;
     var guessTime = 1000;
 
-    // Round variables
-    var round = 0;
-    var correct = 0;
-
+    $("#start").on("click", function () {
+        $("#start").hide();
+        trivia.initializeDisplay();
+        
+    })
+    
 });
 
