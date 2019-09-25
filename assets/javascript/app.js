@@ -48,32 +48,23 @@ var Trivia = {
 
     // Timer variables
     timer: 0,
-    guessTime: 1000,
+    guessTime: 15,
 
     startTimer: function () {
         clearInterval(this.timer);
-        this.timer = setInterval(this.decrement, this.guessTime);
+        this.timer = setInterval(() => {
+            this.guessTime--;
+
+            $("#time-remaining").text(this.guessTime);
+
+            if (this.guessTime === 0) {
+
+                clearInterval(this.timer);
+
+                alert("Time Up!");
+            }
+        }, 1000);
     },
-
-    decrement: function () {
-        this.guessTime--;
-
-        //  Show the number in the #show-number tag.
-        console.log(this.guessTime);
-        $("#time-remaining").text(this.guessTime);
-
-        if (this.guessTime === 0) {
-
-            stopTimer();
-
-            alert("Time Up!");
-        }
-    },
-
-    stopTimer: function () {
-        clearInterval(this.timer);
-    }
-
 }
 
 // ------ Helper Functions ------
