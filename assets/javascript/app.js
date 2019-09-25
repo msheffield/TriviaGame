@@ -1,15 +1,13 @@
 // Trivia Object (to be moved to separate file once I figure that out)
 var Trivia = {
-    set1: {
-        question: "What is the common name for Oophaga Pumilio Siquirres?",
-        answer: "Black Jeans",
-        options: ["Black Jeans", "Blue Jeans", "Strawberry", "Salt Creek"]
-    },
-    set2: {
-        question: "Which frog has the most potent poison?",
-        answer: "Phyllobates Teribe",
-        options: ["Black Jeans", "Blue Jeans", "Strawberry", "Salt Creek"]
-    },
+    
+
+    // Questions as an array
+    questions: ["What is the common name of Oophaga Pumilio Siquirres?"],
+    // Options as an array of arrays
+    options: [["Black Jeans", "Blue Jeans", "Strawberry", "Salt Creek"]],
+    // Answers as an array
+    answers: ["Black Jeans"]
 }
 
 // ------ Game Functions ------
@@ -27,8 +25,8 @@ function initializeQuestionAndOptions(set) {
 // ------ Helper Functions ------
 
 function countDown() {
-    number--;
-    $("#time-remaining").text(number);
+    guessTime--;
+    $("#time-remaining").text(guessTime);
 }
 
 // ------ Game Flow ------
