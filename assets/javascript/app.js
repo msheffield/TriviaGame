@@ -16,6 +16,7 @@ var Trivia = {
 
 //Sets the Question text and sets each option text
 function initializeQuestionAndOptions(set) {
+    console.log(set.options);
     $("#question").text(set.question);
     for (let i = 0; i < 4; i++) {
         $("#option-" + (i + 1)).text(set.options[i]);
@@ -23,32 +24,26 @@ function initializeQuestionAndOptions(set) {
     }
 }
 
-function isCorrect() {
-    if (set.answer == userAnswer) {
-        return true;
-    }
-}
-
 // ------ Helper Functions ------
 
-
+function countDown() {
+    number--;
+    $("#time-remaining").text(number);
+}
 
 // ------ Game Flow ------
 $(document).ready(function () {
+    // Triva object
     var trivia = Trivia;
-    initializeQuestionAndOptions(trivia.set1);
 
+    // Timer variables
     var timer;
-    // Time to guess set to 10 seconds
-    var guessTime = 100000
-    var answer = "";
+    var timer_active = false;
+    var guessTime = 1000;
 
-    $(".option-button").on("click", function () {
-        answer = this.id;
-        console.log(answer);
-    });
-
-
+    // Round variables
+    var round = 0;
+    var correct = 0;
 
 });
 
