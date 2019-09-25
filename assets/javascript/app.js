@@ -23,8 +23,32 @@ function initializeQuestionAndOptions(set) {
     }
 }
 
+function isCorrect() {
+    if (set.answer == userAnswer) {
+        return true;
+    }
+}
+
 // ------ Helper Functions ------
+
+
+
+// ------ Game Flow ------
 $(document).ready(function () {
     var trivia = Trivia;
     initializeQuestionAndOptions(trivia.set1);
+
+    var timer;
+    // Time to guess set to 10 seconds
+    var guessTime = 100000
+    var answer = "";
+
+    $(".option-button").on("click", function () {
+        answer = this.id;
+        console.log(answer);
+    });
+
+
+
 });
+

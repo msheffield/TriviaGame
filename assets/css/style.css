@@ -1,3 +1,7 @@
 * {
     text-align: center;
 }
+
+.option-button {
+    border: black solid 2px;
+}
