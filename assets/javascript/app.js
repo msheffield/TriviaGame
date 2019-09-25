@@ -46,30 +46,27 @@ var Trivia = {
 
     },
 
-    // Timer variables
-    timer: 0,
-    guessTime: 15,
-
-    startTimer: function () {
-        clearInterval(this.timer);
-        this.timer = setInterval(() => {
-            this.guessTime--;
-
-            $("#time-remaining").text(this.guessTime);
-
-            if (this.guessTime === 0) {
-
-                clearInterval(this.timer);
-
-                alert("Time Up!");
-            }
-        }, 1000);
-    },
 }
 
 // ------ Helper Functions ------
 
+function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        guessTime--;
 
+        $("#time-remaining").text(guessTime);
+
+        if (guessTime === 0) {
+
+            clearInterval(timer);
+
+            alert("Time Up!");
+
+            
+        }
+    }, 1000);
+}
 
 // ------ Game Flow ------
 $(document).ready(function () {
@@ -82,7 +79,10 @@ $(document).ready(function () {
         trivia.initializeDisplay();
 
         // start timer
-        trivia.startTimer();
+        // Timer variables
+        timer = 0;
+        guessTime = 15;
+        startTimer();
 
         $(".option-button").on("click", function () {
             $("#" + this.id).css({ "border-color": "blue" });
