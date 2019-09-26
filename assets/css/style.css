@@ -2,6 +2,10 @@ h1,h2,h3 {
     text-align: center;
 }
 
+#game-board {
+    margin-bottom: 20px;
+}
+
 .option-button {
     border: black solid 2px;
     margin-top: 20px;

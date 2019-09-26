@@ -32,11 +32,13 @@ var Trivia = {
             options.addClass("row", "container");
 
             for (let j = 0; j < this.options[i].length; j++) {
-                let option = $('<div>').text(this.options[i][j]);
+                let option = $('<div>');
                 option.addClass('col-md-3');
-                option.addClass('option-button');
-                option.addClass('q' + i);
-                option.attr('id', (id + '-option-' + j));
+                let button = $("<button>").text(this.options[i][j]);
+                button.addClass('q' + i);
+                button.addClass("btn btn-secondary btn-large btn-block option-button");
+                button.attr('id', (id + '-option-' + j));
+                option.append(button);
                 options.append(option);
             }
 
@@ -104,15 +106,16 @@ $(document).ready(function () {
         guessTime = 15;
         startTimer();
 
-        $(".option-button").on("click", function () {
-            $("#" + this.id).css({ "border-color": "blue" });
+        $(".btn-secondary").on("click", function () {
             trivia.userAnswers.push($(this).text());
-            console.log(trivia.userAnswers);
 
-            let questionString = this.id.slice(0, 2);
+            let questionString = "." + this.id.slice(0, 2);
+            
+            $(questionString).addClass("disabled");
+            $(questionString).attr("aria-disabled", "true");
+            $(questionString).prop("disabled", true);
 
-            $("." + questionString).removeClass("option-button");
-            $("." + questionString).addClass("disabled");
+
         });
 
         $("#finish").on("click", function () {
