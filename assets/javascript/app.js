@@ -22,7 +22,7 @@ var Trivia = {
             div.addClass("container")
 
             let question = $("<div>");
-            question.addClass("row", "container")
+            question.addClass("row container-fluid question");
             question.html('<h3>' + this.questions[i] + '</h3>');
             div.append(question);
 
@@ -63,7 +63,7 @@ var Trivia = {
         div.addClass("results");
         div.html("<h2> You guessed " + correctAnswers + " out of " + totalQuestions + " correct! </h2>");
 
-        $("#game-board").append(div);
+        $("#results").append(div);
     }
 
 }
