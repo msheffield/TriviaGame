@@ -6,6 +6,8 @@ body {
     background-image: url("https://www.joshsfrogs.com/catalog/blog/wp-content/uploads/2007/07/poison-dart-frog-diversity.jpg");
     background-repeat: repeat-y;
     background-size: cover;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .option-button {
@@ -33,6 +35,5 @@ body {
 }
 
 #game-board {
-    background-image: url("http://www.joshsfrogs.com/catalog/blog/wp-content/uploads/moss-vivarium-small-red-frog.jpg");
-    background-size: cover;
+    background-color: white;
 }
