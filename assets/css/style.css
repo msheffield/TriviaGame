@@ -2,6 +2,17 @@ h1,h2,h3 {
     text-align: center;
 }
 
+body {
+    background-image: url("https://www.joshsfrogs.com/catalog/blog/wp-content/uploads/2007/07/poison-dart-frog-diversity.jpg");
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+#game-board {
+    background-image: url("http://www.joshsfrogs.com/catalog/blog/wp-content/uploads/moss-vivarium-small-red-frog.jpg");
+    background-size: cover;
+}
+
 #game-board {
     margin-bottom: 20px;
 }
