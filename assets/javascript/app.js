@@ -10,11 +10,12 @@ var Trivia = {
     answers: ["Black Jeans", "From what they eat", "Phyllobates Terribilis"],
 
     // USER VARIABLES
-    correctAnswers: 0,
     userAnswers: [],
 
     // Updates the display to show the question and options for the current round
     initializeDisplay: function () {
+        $("#finish").show();
+
         for (let i = 0; i < this.questions.length; i++) {
 
             let div = $("<div>");
@@ -59,11 +60,15 @@ function startTimer() {
 
         if (guessTime === 0) {
 
-            clearInterval(timer);
+            stopTimer(timer);
 
             alert("Time Up!");
         }
     }, 1000);
+}
+
+function stopTimer(timer) {
+    clearInterval(timer);
 }
 
 // ------ Game Flow ------
@@ -84,12 +89,16 @@ $(document).ready(function () {
 
         $(".option-button").on("click", function () {
             $("#" + this.id).css({ "border-color": "blue" });
+            trivia.userAnswers.push($(this).text());
+            console.log(trivia.userAnswers);
 
             let questionString = this.id.slice(0, 2);
 
             $("." + questionString).removeClass("option-button");
             $("." + questionString).addClass("disabled");
-        })
+        });
+
+        $()
     })
 });
 
