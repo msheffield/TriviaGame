@@ -23,7 +23,7 @@ var Trivia = {
 
             let question = $("<div>");
             question.addClass("row", "container")
-            question.html('<h2>' + this.questions[i] + '</h2>');
+            question.html('<h3>' + this.questions[i] + '</h3>');
             div.append(question);
 
             let id = ("q" + i);
@@ -46,6 +46,23 @@ var Trivia = {
         }
 
     },
+
+    calculateResults: function () {
+        let totalQuestions = this.answers.length;
+        let correctAnswers = 0;
+
+        for (let i = 0; i < this.userAnswers.length; i++) {
+            if (this.answers.includes(this.userAnswers[i])) {
+                correctAnswers++;
+            }
+        }
+
+        let div = $("<div>");
+        div.addClass("results");
+        div.html("<h2> You guessed " + correctAnswers + " out of " + totalQuestions + " correct! </h2>");
+
+        $("#game-board").append(div);
+    }
 
 }
 
@@ -98,7 +115,10 @@ $(document).ready(function () {
             $("." + questionString).addClass("disabled");
         });
 
-        $()
+        $("#finish").on("click", function () {
+            stopTimer(timer);
+            trivia.calculateResults();
+        })
     })
 });
 
