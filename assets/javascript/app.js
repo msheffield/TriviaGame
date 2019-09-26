@@ -62,8 +62,6 @@ function startTimer() {
             clearInterval(timer);
 
             alert("Time Up!");
-
-            
         }
     }, 1000);
 }
