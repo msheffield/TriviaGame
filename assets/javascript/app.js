@@ -80,7 +80,9 @@ function startTimer() {
         if (guessTime === 0) {
 
             stopTimer(timer);
-
+            $(".btn").addClass("disabled");
+            $(".btn").attr("aria-disabled", "true");
+            $(".btn").prop("disabled", true);
             alert("Time Up!");
         }
     }, 1000);
@@ -114,13 +116,17 @@ $(document).ready(function () {
             $(questionString).addClass("disabled");
             $(questionString).attr("aria-disabled", "true");
             $(questionString).prop("disabled", true);
-
+            $("#finish").show();
 
         });
 
         $("#finish").on("click", function () {
             stopTimer(timer);
             trivia.calculateResults();
+            $(".btn").addClass("disabled");
+            $(".btn").attr("aria-disabled", "true");
+            $(".btn").prop("disabled", true);
+            $("#finish").hide();
         })
     })
 });
